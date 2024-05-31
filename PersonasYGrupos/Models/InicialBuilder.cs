@@ -101,6 +101,15 @@ namespace PersonasYGrupos.Models
                 DOB = DateTime.Parse("1978/01/11"),
                 Sex = 'M'
             });
+            empList.Add(new Employee()
+            {
+                ID = 11,
+                FName = "Juanita",
+                MName = "Pérez",
+                LName = "Ramírez",
+                DOB = DateTime.Parse("2019/01/11"),
+                Sex = 'F'
+            });
             return empList;
         }
     }

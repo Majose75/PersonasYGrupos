@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Data.Common;
+using System.Reflection.Metadata.Ecma335;
 using System.Xml.Schema;
 using PersonasYGrupos.Models;
 
@@ -75,4 +76,28 @@ foreach (var texto in Consulta6)
     {
         Console.Write(texto2.FName + " ");
     }
+}
+Console.WriteLine("\nMisma que lo anterior de otra forma:");
+
+var Consulta6bis =
+    from item in elementos
+    orderby item.FName
+    group item by item.Sex
+    into item2
+    select item2;
+foreach (var texto in Consulta6bis)
+{
+    Console.WriteLine("\nSexo " + texto.Key + ":");
+    foreach (var texto2 in texto)
+    {
+        Console.Write(texto2.FName + " ");
+    }
+}
+//Mostrar todos los empleados que tienen menos de 16 años.
+Console.WriteLine("\n\nMostrar todos los empleados que tienen menos de 16 años:");
+var Consulta12 = from item in elementos where (DateTime.Today).Year - (item.DOB).Year < 16 select item;
+
+foreach (var texto in Consulta12)
+{
+    Console.WriteLine(texto.FName + " nació el año: " + (texto.DOB).Year);
 }
